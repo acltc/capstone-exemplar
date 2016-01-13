@@ -1,5 +1,5 @@
 class MeetingsController < ApplicationController
   def index
-    @meetings = Meeting.all
+    @meetings = current_user.meetings
   end
 end

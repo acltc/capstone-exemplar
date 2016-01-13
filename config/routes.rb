@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
   devise_for :users
-  get '/' => 'meetings#index'
+  get '/' => 'landing_page#index'
   get '/meetings' => 'meetings#index'
 end
