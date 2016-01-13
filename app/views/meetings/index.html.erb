@@ -1,1 +1,7 @@
-index.html.erb
+<h1>Meetings</h1>
+<% @meetings.each do |meeting| %>
+  <h2><%= meeting.name %></h2>
+  <p>Start: <%= meeting.start_time %></p>
+  <p>End: <%= meeting.end_time %></p>
+  <p>Address: <%= meeting.address %></p>
+<% end %>
