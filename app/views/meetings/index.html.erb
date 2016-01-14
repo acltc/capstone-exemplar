@@ -1,4 +1,5 @@
 <h1>Meetings</h1>
+<%= link_to "Create a new meeting", "/meetings/new" %>
 <% @meetings.each do |meeting| %>
   <h2><%= meeting.name %></h2>
   <p>Start: <%= meeting.start_time %></p>
