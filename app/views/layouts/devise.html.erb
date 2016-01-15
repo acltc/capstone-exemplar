@@ -5,11 +5,93 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+
+  <!-- Styles -->
+  <!-- Bootstrap CSS -->
+  <link href="/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font awesome CSS -->
+  <link href="/css/font-awesome.min.css" rel="stylesheet">
+  
+  <!-- CSS for this page -->
+  <link href="/css/styles/index-slim.css" rel="stylesheet">
+  
+  <!-- Base style -->
+  <link href="/css/styles/style.css" rel="stylesheet">
+  <!-- Skin CSS -->
+  <link href="/css/styles/skin-lblue.css" rel="stylesheet" id="color_theme">
+  
+  <!-- Custom CSS. Type your CSS code in custom.css file -->
+  <link href="/css/custom.css" rel="stylesheet">   
+  
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="#">
 </head>
-<body>
-  <p>Some fancy stuff here...</p>
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
-  <%= yield %>
+<body class="no-box">
+
+  <div class="index-slim">
+    
+    <!-- Header Starts -->
+    <div class="slim-header">
+      <!-- Container -->
+      <div class="container">
+        <!-- Logo Starts -->
+        <div class="logo">
+          <h1><a href="#"><i class="fa fa-arrow-circle-right color"></i>MyBook</a></h1>
+        </div>
+        <!-- Navigation -->
+        <div class="navigation" id="nav">
+          <ul class="list-inline">
+            <li><%= link_to "Home", "/" %></li>
+            <li><%= link_to "Sign in", "/users/sign_in" %></li>
+            <li><%= link_to "Sign up", "/users/sign_up" %></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Header Ends -->
+    
+    
+    <div class="slim-slider slim-outer">
+      <% if notice %>
+        <p class="notice"><%= notice %></p>
+      <% end %>
+      <% if alert %>
+        <p class="alert"><%= alert %></p>
+      <% end %>
+      <%= yield %>
+    </div>
+
+    <!-- Home Ends -->
+       
+  
+  <!-- Scroll to top -->
+  <span class="totop"><a href="#"><i class="fa fa-angle-up bg-color"></i></a></span>
+  
+  <!-- Javascript files -->
+  <!-- Bootstrap JS -->
+  <script src="/js/bootstrap.min.js"></script>
+  <!-- Placeholders JS -->
+  <script src="/js/placeholders.js"></script>
+  <!-- Respond JS for IE8 -->
+  <script src="/js/respond.min.js"></script>
+  <!-- HTML5 Support for IE -->
+  <script src="/js/html5shiv.js"></script>
+  
+  <!-- Javascript for this page -->
+  <!-- Arbitary Anchor -->
+  <script src="/js/jquery.arbitrary-anchor.js"></script>
+  <!-- jQuery stickey -->
+  <script src="/js/jquery.sticky.js"></script>
+  
+  <script type="text/javascript">
+    /* Sticky */
+    $(document).ready(function(){
+      $("#nav").sticky({topSpacing:0,leftSpacing:0});
+    });
+  </script>
+  
+  
+  
 </body>
 </html>
