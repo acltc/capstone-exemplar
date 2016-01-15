@@ -9,7 +9,6 @@
         <i class="fa fa-envelope lblue"></i>
       </div>
       <div class="ui-input">
-        <!-- <input type="text" class="form-control" placeholder="Email or Username"> -->
         <%= f.email_field :email, autofocus: true, class: "form-control", placeholder: "Email" %>
       </div>
     </div>
@@ -20,13 +19,11 @@
         <i class="fa fa-unlock-alt lblue"></i>
       </div>
       <div class="ui-input">
-        <!-- <input type="text" name="uname" class="form-control" placeholder="Your Password"> -->
         <%= f.password_field :password, autocomplete: "off", class: "form-control", placeholder: "Password" %>
       </div>
     </div>
     <div class="clearfix"></div>
 
-    <!-- Footer -->
     <div class="ui-foot bg-lblue">
       <%= f.submit "SUBMIT", class: "ui-button" %>
     </div>
