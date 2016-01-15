@@ -1,5 +1,10 @@
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
+  <div class="alert alert-danger alert-dismissible fade in" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    <%= devise_error_messages! %>
+  </div>
   <div class="ui-40">
     <div class="ui-head bg-lblue">
       <h2>SIGN UP</h2>

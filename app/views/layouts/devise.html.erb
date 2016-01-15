@@ -55,10 +55,20 @@
     
     <div class="slim-slider slim-outer">
       <% if notice %>
-        <p class="notice"><%= notice %></p>
+        <div class="alert alert-info alert-dismissible fade in" role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <%= notice %>
+        </div>
       <% end %>
       <% if alert %>
-        <p class="alert"><%= alert %></p>
+        <div class="alert alert-warning alert-dismissible fade in" role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <%= alert %>
+        </div>
       <% end %>
       <%= yield %>
     </div>
