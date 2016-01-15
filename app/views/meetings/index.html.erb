@@ -1,8 +1,74 @@
-<h1>Meetings</h1>
-<%= link_to "Create a new meeting", "/meetings/new" %>
-<% @meetings.each do |meeting| %>
-  <h2><%= meeting.name %></h2>
-  <p>Start: <%= meeting.start_time %></p>
-  <p>End: <%= meeting.end_time %></p>
-  <p>Address: <%= meeting.address %></p>
-<% end %>
+<!-- Page heading one starts -->
+
+<div class="page-heading-one">
+  <h2>My Meetings</h2>
+  <p class="bg-color"><%= link_to "Create a new meeting", "/meetings/new" %></p>
+</div>
+  
+<!-- Page heading one ends -->
+<div class="container">
+  <div class="blog-masonry">
+
+    <% @meetings.each do |meeting| %>
+      <div class="item">
+        <!-- Entry for each grid -->
+        <div class="grid-entry">
+          <% if false %>
+            <div class="grid-img">
+              <!-- Image -->
+              <img src="<%= meeting.image %>" class="img-responsive" alt="" />
+              <!-- Grid Image Hover Effect -->
+              <span class="grid-img-hover"></span>
+              <a href="<%= meeting.image %>" class="lightbox">
+                <i class="fa fa-search hover-icon"></i>
+              </a>
+            </div>
+          <% end %>
+          <!-- Grid entry information -->
+          <div class="entry-info">
+            <h4><a href="/meetings/<%= meeting.id %>"><%= meeting.name %></a></h4>
+            <div class="bor"></div>
+            <!-- Paragraph -->
+
+            <p><strong>Start: </strong><%= meeting.start_time %></br>
+            <p><strong>End: </strong><%= meeting.end_time %></br>
+            <p><strong>Address: </strong><%= meeting.address %></p>
+            <a href="/meetings/<%= meeting.id %>" class="read-more">Details <i class="fa fa-angle-double-right"></i></a>
+          </div>
+        </div>
+      </div>
+    <% end %>
+    
+    <div class="clearfix"></div>
+  </div>
+  
+  <hr />
+  
+  <!-- Pagination -->
+  <ul class="pagination">
+    <!-- List -->
+    <li><a href="#">&laquo;</a></li>
+    <li class="active"><a href="#">1</a></li>
+    <li><a href="#">2</a></li>
+    <li><a href="#">3</a></li>
+    <li><a href="#">4</a></li>
+    <li><a href="#">5</a></li>
+    <li><a href="#">&raquo;</a></li>
+  </ul>
+  
+</div>
+
+<!-- Javascript for this page -->
+<!-- Imageloaded js-->
+<script src="js/imagesloaded.min.js"></script>
+<!-- Masonry JS -->
+<script src="js/masonry.js"></script>
+    
+<script type="text/javascript">
+  // Initialize Masonry
+  var $box = $('.blog-masonry').masonry();
+  // Layout Masonry again after all images have loaded
+  $box.imagesLoaded( function() {
+    $box.masonry();
+  });
+</script>
