@@ -1,29 +1,51 @@
-<h2>Sign up!</h2>
-
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
+  <div class="ui-40">
+    <div class="ui-head bg-lblue">
+      <h2>SIGN UP</h2>
+    </div>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
-  </div>
+    <div class="ui-block bg-white">
+      <div class="ui-icon">
+        <i class="fa fa-envelope lblue"></i>
+      </div>
+      <div class="ui-input">
+        <!-- <input type="text" class="form-control" placeholder="Email or Username"> -->
+        <%= f.email_field :email, autofocus: true, class: "form-control", placeholder: "Email" %>
+      </div>
+    </div>
+    <div class="clearfix"></div>
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
+    <div class="ui-block bg-white">
+      <div class="ui-icon">
+        <i class="fa fa-unlock-alt lblue"></i>
+      </div>
+      <div class="ui-input">
+        <!-- <input type="text" name="uname" class="form-control" placeholder="Your Password"> -->
+        <%= f.password_field :password, autocomplete: "off", class: "form-control", placeholder: "Password" %>
+      </div>
+    </div>
+    <div class="clearfix"></div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
 
-  <div class="actions">
-    <%= f.submit "Sign up" %>
+    <div class="ui-block bg-white">
+      <div class="ui-icon">
+        <i class="fa fa-unlock-alt lblue"></i>
+      </div>
+      <div class="ui-input">
+        <!-- <input type="text" name="uname" class="form-control" placeholder="Your Password"> -->
+        <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control", placeholder: "Password confirmation" %>
+      </div>
+    </div>
+    <div class="clearfix"></div>
+
+    <!-- Footer -->
+    <div class="ui-foot bg-lblue">
+      <!-- Buttons -->
+      <!-- <button type="submit" class="ui-button">REGISTER</button>  -->
+      <%= f.submit "REGISTER", class: "ui-button" %>
+    </div>
   </div>
 <% end %>
 
-<%= render "devise/shared/links" %>
+
