@@ -1,5 +1,5 @@
 json.id meeting.id
-json.name meeting.name
+json.title meeting.name
 json.address meeting.address
-json.start_time meeting.start_time
-json.end_time meeting.end_time
+json.start meeting.start_time
+json.end meeting.end_time

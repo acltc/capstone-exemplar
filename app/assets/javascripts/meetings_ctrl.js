@@ -1,4 +1,4 @@
-/* global angular */
+/* global angular, $ */
 (function() {
   angular.module('app').controller('meetingsCtrl', function($scope, $http) {
     $scope.setup = function() {
@@ -12,33 +12,27 @@
             center: 'title',
             right: 'today prev,next'
           },
-          defaultView: 'agendaWeek',
+          defaultView: 'month',
           dayClick: $scope.alertEventOnClick,
           eventDrop: $scope.alertOnDrop,
           eventResize: $scope.alertOnResize
         }
       };
-      $scope.eventSources = {
-        events: [
-          {
-            title: 'Event1',
-            start: '2016-01-18'
-          },
-          {
-            title: 'Event2',
-            start: '2016-01-19'
-          },
-          {
-            title: 'Event3',
-            start: new Date()
-          }
-        ],
-        color: 'yellow',   // an option!
-        textColor: 'black' // an option!
-      };
+      $scope.eventSources = {};
       $http.get('/api/v1/meetings.json').then(function(response) {
         $scope.meetings = response.data;
+        $scope.eventSources = {
+          events: response.data,
+          color: 'yellow',   // an option!
+          textColor: 'black' // an option!
+        };
+        refreshCalendar();
       });
     };
+
+    function refreshCalendar() {
+      $("#calendar").fullCalendar('removeEvents');
+      $("#calendar").fullCalendar('addEventSource', $scope.eventSources);
+    }
   });
 })();
