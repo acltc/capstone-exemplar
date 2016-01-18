@@ -24,7 +24,7 @@
             
             <p>Start: <%= @meeting.start_time %></p>
             <p>End: <%= @meeting.end_time %></p>
-            <p>Address: <%= @meeting.address %></p>
+            <p>Address: <span id="meeting-address"><%= @meeting.address %></span></p>
 
             <!-- Paragraph -->
             <p>Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae  rerum hic tenetur. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae  rerum hic tenetur.Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae  rerum hic tenetur. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae  rerum hic tenetur. <br />
@@ -166,8 +166,14 @@
       <div class="col-md-4">
         <!-- Sidebar -->
         <div class="sidebar">
-          <%= link_to "Back to all meetings", "/meetings" %>
-          
+          <div class="s-widget">
+            <%= link_to "Back to all meetings", "/meetings" %>
+          </div>
+
+          <div class="s-widget">
+            <div id="googleMap" style="height:380px;"></div>
+          </div>
+
           <!-- Search Widget -->
           <div class="s-widget">
             <!-- Heading -->
@@ -409,3 +415,6 @@
   </div>
           
 </div>
+
+
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=drawing&callback=initializeMap" async defer></script>
