@@ -6,56 +6,64 @@
 </div>
   
 <!-- Page heading one ends -->
-<div class="container">
-  <div class="blog-masonry">
+<div class="container" ng-app="app">
+  <div ng-controller="meetingsCtrl" ng-init="setup()">
+    <div ng-repeat="meeting in meetings">
+      <p>{{ meeting.name }}</p>
+      <p>{{ meeting.address }}</p>
+    </div>
+    
+    <div class="blog-masonry">
+      {{ message }}
 
-    <% @meetings.each do |meeting| %>
-      <div class="item">
-        <!-- Entry for each grid -->
-        <div class="grid-entry">
-          <% if false %>
-            <div class="grid-img">
-              <!-- Image -->
-              <img src="<%= meeting.image %>" class="img-responsive" alt="" />
-              <!-- Grid Image Hover Effect -->
-              <span class="grid-img-hover"></span>
-              <a href="<%= meeting.image %>" class="lightbox">
-                <i class="fa fa-search hover-icon"></i>
-              </a>
+      <% @meetings.each do |meeting| %>
+        <div class="item">
+          <!-- Entry for each grid -->
+          <div class="grid-entry">
+            <% if false %>
+              <div class="grid-img">
+                <!-- Image -->
+                <img src="<%= meeting.image %>" class="img-responsive" alt="" />
+                <!-- Grid Image Hover Effect -->
+                <span class="grid-img-hover"></span>
+                <a href="<%= meeting.image %>" class="lightbox">
+                  <i class="fa fa-search hover-icon"></i>
+                </a>
+              </div>
+            <% end %>
+            <!-- Grid entry information -->
+            <div class="entry-info">
+              <h4><a href="/meetings/<%= meeting.id %>"><%= meeting.name %></a></h4>
+              <div class="bor"></div>
+              <!-- Paragraph -->
+
+              <p><strong>Start: </strong><%= meeting.start_time %></br>
+              <p><strong>End: </strong><%= meeting.end_time %></br>
+              <p><strong>Address: </strong><%= meeting.address %></p>
+              <a href="/meetings/<%= meeting.id %>" class="read-more">Details <i class="fa fa-angle-double-right"></i></a>
             </div>
-          <% end %>
-          <!-- Grid entry information -->
-          <div class="entry-info">
-            <h4><a href="/meetings/<%= meeting.id %>"><%= meeting.name %></a></h4>
-            <div class="bor"></div>
-            <!-- Paragraph -->
-
-            <p><strong>Start: </strong><%= meeting.start_time %></br>
-            <p><strong>End: </strong><%= meeting.end_time %></br>
-            <p><strong>Address: </strong><%= meeting.address %></p>
-            <a href="/meetings/<%= meeting.id %>" class="read-more">Details <i class="fa fa-angle-double-right"></i></a>
           </div>
         </div>
-      </div>
-    <% end %>
+      <% end %>
+      
+      <div class="clearfix"></div>
+    </div>
     
-    <div class="clearfix"></div>
+    <hr />
+    
+    <!-- Pagination -->
+    <ul class="pagination">
+      <!-- List -->
+      <li><a href="#">&laquo;</a></li>
+      <li class="active"><a href="#">1</a></li>
+      <li><a href="#">2</a></li>
+      <li><a href="#">3</a></li>
+      <li><a href="#">4</a></li>
+      <li><a href="#">5</a></li>
+      <li><a href="#">&raquo;</a></li>
+    </ul>
+  
   </div>
-  
-  <hr />
-  
-  <!-- Pagination -->
-  <ul class="pagination">
-    <!-- List -->
-    <li><a href="#">&laquo;</a></li>
-    <li class="active"><a href="#">1</a></li>
-    <li><a href="#">2</a></li>
-    <li><a href="#">3</a></li>
-    <li><a href="#">4</a></li>
-    <li><a href="#">5</a></li>
-    <li><a href="#">&raquo;</a></li>
-  </ul>
-  
 </div>
 
 <!-- Javascript for this page -->
