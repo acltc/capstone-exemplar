@@ -12,6 +12,9 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require moment
 //= require angular
 //= require app
+//= require angular-calendar
+//= require fullcalendar
 //= require_tree .

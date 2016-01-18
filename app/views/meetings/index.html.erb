@@ -8,6 +8,8 @@
 <!-- Page heading one ends -->
 <div class="container" ng-app="app">
   <div ng-controller="meetingsCtrl" ng-init="setup()">
+    <div ui-calendar ng-model="eventSources"></div>
+    
     <div ng-repeat="meeting in meetings">
       <p>{{ meeting.name }}</p>
       <p>{{ meeting.address }}</p>

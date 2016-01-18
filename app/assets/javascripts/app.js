@@ -1,4 +1,4 @@
 /* global angular */
 (function() {
-  angular.module("app", []);
+  angular.module("app", ['ui.calendar']);
 })();
