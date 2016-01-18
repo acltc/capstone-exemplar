@@ -1,7 +1,7 @@
-/* global angular, $ */
+/* global angular, $, moment */
 (function() {
-  angular.module('app').controller('meetingsCtrl', function($scope, $http) {
-    $scope.setup = function() {
+  angular.module('app').controller('meetingsCtrl', function($scope, $http, $location) {
+    $scope.setupIndex = function() {
       $scope.message = "yoyoyo";
       $scope.uiConfig = {
         calendar:{
@@ -30,9 +30,22 @@
       });
     };
 
+    $scope.setupShow = function(meetingId) {
+      $http.get('/api/v1/meetings/' + meetingId + '.json').then(function(response) {
+        $scope.meeting = response.data;
+        console.log($scope.meeting.start);
+        $scope.startTimeFormatted = moment($scope.meeting.start).format('MMMM Do YYYY, h:mm:ss a');
+        $scope.endTimeFormatted = moment($scope.meeting.end).format('MMMM Do YYYY, h:mm:ss a');
+        $scope.updatedAtFormatted = moment($scope.meeting.updatedAt).fromNow();
+      });
+    };
+
     function refreshCalendar() {
       $("#calendar").fullCalendar('removeEvents');
       $("#calendar").fullCalendar('addEventSource', $scope.eventSources);
     }
+
+    window.$scope = $scope;
+    window.$location = $location;
   });
 })();

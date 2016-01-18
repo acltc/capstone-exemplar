@@ -1,8 +1,6 @@
 <div class="container" ng-app="app">
-  {{ 1 + 1 }}
   <!-- blog two -->
-  <div class="blog-two" ng-controller="meetingsCtrl">
-    {{ message }}
+  <div class="blog-two" ng-controller="meetingsCtrl" ng-init="setupShow(<%= @meeting.id %>)">
     <div class="row">
       <!-- Mainbar column -->
       <div class="col-md-8">
@@ -16,15 +14,15 @@
             <!-- Blog meta -->
             <div class="blog-meta">
               <!-- Date -->
-              <a href="#"><i class="fa fa-calendar"></i> &nbsp; <%= @meeting.updated_at %></a> &nbsp; 
+              <a href="#"><i class="fa fa-calendar"></i> &nbsp; Updated {{ updatedAtFormatted }}</a> &nbsp; 
               <!-- Author -->
               <a href="#"><i class="fa fa-user"></i> &nbsp; <%= current_user.email %></a> &nbsp;
               <!-- Comments -->
               <a href="#"><i class="fa fa-comments"></i> &nbsp; 6 Comments</a>
             </div>
             
-            <p>Start: <%= @meeting.start_time %></p>
-            <p>End: <%= @meeting.end_time %></p>
+            <p>Start: {{ startTimeFormatted }}</p>
+            <p>End: {{ endTimeFormatted }}</p>
             <p>Address: <span id="meeting-address"><%= @meeting.address %></span></p>
 
             <!-- Paragraph -->
