@@ -1,4 +1,4 @@
-/* global angular, moment */
+/* global angular, moment, initializeMapIndex */
 (function() {
   angular.module('app').controller('meetingsCtrl', function($scope, $http, $location) {
     $scope.setupIndex = function() {
@@ -19,6 +19,7 @@
       };
       $scope.eventSources = [];
       $http.get('/api/v1/meetings.json').then(function(response) {
+        console.log('angular get', response);
         $scope.meetings = response.data;
         $scope.meetings2 = [{title: 'sample', start: '2016-01-21'}];
         $scope.eventSources.push({
@@ -30,6 +31,7 @@
           events: $scope.meetings2,
           color: 'purple'
         });
+        initializeMapIndex(response.data);
       });
     };
 

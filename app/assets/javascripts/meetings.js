@@ -20,3 +20,31 @@ function initializeMap() {
     }
   });
 }
+
+function initializeMapIndex(meetings) {
+  console.log('initializeMapIndex', meetings);
+  var mapProp = {
+    center: new google.maps.LatLng(51.508742,-0.120850),
+    zoom: 15,
+    mapTypeId:google.maps.MapTypeId.ROADMAP
+  };
+  var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
+  var geocoder = new google.maps.Geocoder();
+  var markers = [];
+  var bounds = new google.maps.LatLngBounds();
+  meetings.forEach(function(meeting) {
+    geocoder.geocode({address: meeting.address}, function(results, status) {
+      if (status === google.maps.GeocoderStatus.OK) {
+        var marker = new google.maps.Marker({
+          map: map,
+          position: results[0].geometry.location
+        });
+        markers.push(marker);
+        for (var i = 0;i < markers.length; i++) {
+          bounds.extend(markers[i].getPosition());
+        }
+        map.fitBounds(bounds);
+      }
+    });
+  });
+}
