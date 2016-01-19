@@ -21,13 +21,14 @@
       $scope.eventSources = [];
       $http.get('/api/v1/meetings.json').then(function(response) {
         $scope.meetings = response.data;
+        $scope.meetings2 = [{title: 'sample', start: '2016-01-21'}];
         $scope.eventSources.push({
-          events: response.data,
+          events: $scope.meetings,
           color: 'yellow',
           textColor: 'black'
         });
         $scope.eventSources.push({
-          events: [{title: 'sample', start: '2016-01-21'}],
+          events: $scope.meetings2,
           color: 'purple'
         });
       });

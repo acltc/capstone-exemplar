@@ -11,7 +11,8 @@
     <div ui-calendar="uiConfig.calendar" ng-model="eventSources" id="calendar"></div>
     
     <div ng-repeat="meeting in meetings">
-      <p>{{ meeting.name }}</p>
+      <p>{{ meeting.title }}</p>
+      <input ng-model="meeting.title">
       <p>{{ meeting.address }}</p>
     </div>
     
