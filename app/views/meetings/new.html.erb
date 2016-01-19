@@ -1,27 +1,33 @@
+<div class="container">
+  
 <h1>Create a new meeting</h1>
 <%= form_tag "/meetings", method: :post do %>
-  <div>
+  <div class="form-group">
     <%= label_tag :name %>
-    <%= text_field_tag :name %>
+    <%= text_field_tag :name, @meeting.name, class: "form-control" %>
   </div>
-  <div>
+  <div class="form-group">
     <%= label_tag :address %>
-    <%= text_field_tag :address %>
+    <%= text_field_tag :address, @meeting.address, class: "form-control" %>
   </div>
-  <div>
+  <div class="form-group">
     <%= label_tag :start_time %>
-    <%= datetime_local_field_tag :start_time %>
+    <%= datetime_local_field_tag :start_time, @meeting.start_time, class: "form-control" %>
   </div>
-  <div>
+  <div class="form-group">
     <%= label_tag :end_time %>
-    <%= datetime_local_field_tag :end_time %>
+    <%= datetime_local_field_tag :end_time, @meeting.end_time, class: "form-control" %>
   </div>
-  <div>
+  <div class="form-group">
     <%= label_tag :members %>
-    <%= select_tag :members, options_for_select(@members.collect{ |u| [u.email, u.id] }), multiple: true, include_blank: true %>
+    <%= select_tag :members,
+      options_for_select(@members.collect{ |u| [u.email, u.id] }),
+      multiple: true, include_blank: true, class: "form-control"
+    %>
   </div>
-  <div>
-    <%= submit_tag %>
-    <%= link_to "Cancel", "/meetings" %>
+  <div class="form-group">
+    <button type="submit" class="btn btn-default">Submit</button>
+    <%= link_to "Cancel", "/meetings", class: "btn btn-default" %>
   </div>
 <% end %>
+</div>
