@@ -32,12 +32,21 @@ function initializeMapIndex(meetings) {
   var geocoder = new google.maps.Geocoder();
   var markers = [];
   var bounds = new google.maps.LatLngBounds();
+  var infowindow = new google.maps.InfoWindow();
   meetings.forEach(function(meeting) {
     geocoder.geocode({address: meeting.address}, function(results, status) {
       if (status === google.maps.GeocoderStatus.OK) {
         var marker = new google.maps.Marker({
           map: map,
           position: results[0].geometry.location
+        });
+        marker.addListener('click', function() {
+          infowindow.setContent(
+            '<h2>' + meeting.title + '</h2>' +
+            '<p>' + meeting.address + '</p>' +
+            '<a href="/meetings/' + meeting.id + '">View more</a>'
+          );
+          infowindow.open(map, marker);
         });
         markers.push(marker);
         for (var i = 0;i < markers.length; i++) {
