@@ -2,7 +2,6 @@
 (function() {
   angular.module('app').controller('meetingsCtrl', function($scope, $http, $location) {
     $scope.setupIndex = function() {
-      $scope.message = "yoyoyo";
       $scope.uiConfig = {
         calendar:{
           height: 450,

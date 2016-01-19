@@ -9,16 +9,7 @@
 <div class="container" ng-app="app">
   <div ng-controller="meetingsCtrl" ng-init="setupIndex()">
     <div ui-calendar="uiConfig.calendar" ng-model="eventSources" id="calendar"></div>
-    
-    <div ng-repeat="meeting in meetings">
-      <p>{{ meeting.title }}</p>
-      <input ng-model="meeting.title">
-      <p>{{ meeting.address }}</p>
-    </div>
-    
     <div class="blog-masonry">
-      {{ message }}
-
       <% @meetings.each do |meeting| %>
         <div class="item">
           <!-- Entry for each grid -->
