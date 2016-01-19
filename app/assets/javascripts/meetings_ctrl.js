@@ -1,4 +1,4 @@
-/* global angular, $, moment */
+/* global angular, moment */
 (function() {
   angular.module('app').controller('meetingsCtrl', function($scope, $http, $location) {
     $scope.setupIndex = function() {
@@ -18,15 +18,18 @@
           eventResize: $scope.alertOnResize
         }
       };
-      $scope.eventSources = {};
+      $scope.eventSources = [];
       $http.get('/api/v1/meetings.json').then(function(response) {
         $scope.meetings = response.data;
-        $scope.eventSources = {
+        $scope.eventSources.push({
           events: response.data,
-          color: 'yellow',   // an option!
-          textColor: 'black' // an option!
-        };
-        refreshCalendar();
+          color: 'yellow',
+          textColor: 'black'
+        });
+        $scope.eventSources.push({
+          events: [{title: 'sample', start: '2016-01-21'}],
+          color: 'purple'
+        });
       });
     };
 
@@ -39,11 +42,6 @@
         $scope.updatedAtFormatted = moment($scope.meeting.updatedAt).fromNow();
       });
     };
-
-    function refreshCalendar() {
-      $("#calendar").fullCalendar('removeEvents');
-      $("#calendar").fullCalendar('addEventSource', $scope.eventSources);
-    }
 
     window.$scope = $scope;
     window.$location = $location;
