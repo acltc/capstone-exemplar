@@ -1,5 +1,6 @@
 class MeetingsController < ApplicationController
   before_action :authenticate_user!
+  before_action :authorize_owner!, only: [:edit, :update, :destroy]
 
   def index
     @meetings = current_user.meetings
@@ -15,7 +16,8 @@ class MeetingsController < ApplicationController
       name: params[:name],
       address: params[:address],
       start_time: params[:start_time],
-      end_time: params[:end_time]
+      end_time: params[:end_time],
+      user_id: current_user.id
     )
     member_ids = params[:meeting][:user_ids] + [current_user.id]
     member_ids.each do |member_id|
@@ -54,5 +56,15 @@ class MeetingsController < ApplicationController
       )
     end
     redirect_to "/meetings/#{@meeting.id}"
+  end
+
+  private
+
+  def authorize_owner!
+    meeting = Meeting.find_by(id: params[:id])
+    unless current_user.created_meeting? meeting
+      flash[:alert] = "You do not have permission to modify this meeting!"
+      redirect_to '/meetings'
+    end
   end
 end

@@ -19,7 +19,9 @@
               <a href="#"><i class="fa fa-user"></i> &nbsp; <%= current_user.email %></a> &nbsp;
               <!-- Comments -->
               <a href="#"><i class="fa fa-comments"></i> &nbsp; 6 Comments</a> &nbsp;
-              <a href="/meetings/<%= @meeting.id %>/edit"><i class="fa fa-edit"></i> &nbsp; Edit</a>
+              <% if current_user.created_meeting? @meeting %>
+                <a href="/meetings/<%= @meeting.id %>/edit"><i class="fa fa-edit"></i> &nbsp; Edit</a>
+              <% end %>
             </div>
             
             <p>Start: {{ startTimeFormatted }}</p>
