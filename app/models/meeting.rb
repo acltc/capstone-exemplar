@@ -4,4 +4,8 @@ class Meeting < ActiveRecord::Base
 
   geocoded_by :address
   after_validation :geocode
+
+  def display_members
+    users.map { |user| user.email }.join(" | ")
+  end
 end
