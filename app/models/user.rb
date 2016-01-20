@@ -6,4 +6,6 @@ class User < ActiveRecord::Base
 
   has_many :meeting_users
   has_many :meetings, through: :meeting_users
+
+  has_many :created_meetings, class_name: "Meeting", foreign_key: "user_id"
 end
