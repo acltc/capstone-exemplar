@@ -18,7 +18,8 @@
               <!-- Author -->
               <a href="#"><i class="fa fa-user"></i> &nbsp; <%= current_user.email %></a> &nbsp;
               <!-- Comments -->
-              <a href="#"><i class="fa fa-comments"></i> &nbsp; 6 Comments</a>
+              <a href="#"><i class="fa fa-comments"></i> &nbsp; 6 Comments</a> &nbsp;
+              <a href="/meetings/<%= @meeting.id %>/edit"><i class="fa fa-edit"></i> &nbsp; Edit</a>
             </div>
             
             <p>Start: {{ startTimeFormatted }}</p>
