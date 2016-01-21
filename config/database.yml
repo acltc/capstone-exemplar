@@ -79,7 +79,7 @@ test:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
 production:
-  <<: *default
   database: capstone-exemplar_production
-  username: capstone-exemplar
-  password: <%= ENV['CAPSTONE-EXEMPLAR_DATABASE_PASSWORD'] %>
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
