@@ -1,4 +1,4 @@
-/* global angular, moment, initializeMapIndex */
+/* global angular, $, moment, initializeMapIndex */
 (function() {
   angular.module('app').controller('meetingsCtrl', function($scope, $http, $location) {
     $scope.setupIndex = function() {
@@ -32,6 +32,15 @@
           color: 'purple'
         });
         initializeMapIndex(response.data);
+
+        setTimeout(function() {
+          var $box = $('.blog-masonry').masonry();
+          // Layout Masonry again after all images have loaded
+          $box.imagesLoaded( function() {
+            $box.masonry();
+          });
+        }, 0);
+
       });
     };
 

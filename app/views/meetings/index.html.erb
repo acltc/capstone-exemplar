@@ -4,7 +4,7 @@
 
 <div class="page-heading-one">
   <h2>My Meetings</h2>
-  <p class="bg-color"><%= link_to "Create a new meeting", "/meetings/new" %></p>
+  <p class="bg-color"><a href="/meetings/new">Create a new meeting</a></p>
 </div>
   
 <!-- Page heading one ends -->
@@ -12,35 +12,31 @@
   <div ng-controller="meetingsCtrl" ng-init="setupIndex()">
     <div ui-calendar="uiConfig.calendar" ng-model="eventSources" id="calendar"></div>
     <div class="blog-masonry">
-      <% @meetings.each do |meeting| %>
-        <div class="item">
+        <div class="item" ng-repeat="meeting in meetings">
           <!-- Entry for each grid -->
           <div class="grid-entry">
-            <% if false %>
-              <div class="grid-img">
+              <div class="grid-img" ng-if="false">
                 <!-- Image -->
-                <img src="<%= meeting.image %>" class="img-responsive" alt="" />
+                <img src="{{ meeting.image }}" class="img-responsive" alt="" />
                 <!-- Grid Image Hover Effect -->
                 <span class="grid-img-hover"></span>
-                <a href="<%= meeting.image %>" class="lightbox">
+                <a href="{{ meeting.image }}" class="lightbox">
                   <i class="fa fa-search hover-icon"></i>
                 </a>
               </div>
-            <% end %>
             <!-- Grid entry information -->
             <div class="entry-info">
-              <h4><a href="/meetings/<%= meeting.id %>"><%= meeting.name %></a></h4>
+              <h4><a href="/meetings/{{ meeting.id }}">{{ meeting.title }}</a></h4>
               <div class="bor"></div>
               <!-- Paragraph -->
 
-              <p><strong>Start: </strong><%= meeting.start_time %></br>
-              <p><strong>End: </strong><%= meeting.end_time %></br>
-              <p><strong>Address: </strong><%= meeting.address %></p>
-              <a href="/meetings/<%= meeting.id %>" class="read-more">Details <i class="fa fa-angle-double-right"></i></a>
+              <p><strong>Start: </strong>{{ meeting.start }}</br>
+              <p><strong>End: </strong>{{ meeting.end }}</br>
+              <p><strong>Address: </strong>{{ meeting.address }}</p>
+              <a href="/meetings/{{ meeting.id }}" class="read-more">Details <i class="fa fa-angle-double-right"></i></a>
             </div>
           </div>
         </div>
-      <% end %>
       
       <div class="clearfix"></div>
     </div>
@@ -69,14 +65,5 @@
 <script src="/js/imagesloaded.min.js"></script>
 <!-- Masonry JS -->
 <script src="/js/masonry.js"></script>
-    
-<script type="text/javascript">
-  // Initialize Masonry
-  var $box = $('.blog-masonry').masonry();
-  // Layout Masonry again after all images have loaded
-  $box.imagesLoaded( function() {
-    $box.masonry();
-  });
-</script>
 
 
