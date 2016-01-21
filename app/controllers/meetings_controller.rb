@@ -48,7 +48,8 @@ class MeetingsController < ApplicationController
       end_time: params[:end_time]
     )
     @meeting.meeting_users.destroy_all
-    params[:meeting][:user_ids].each do |member_id|
+    member_ids = params[:meeting][:user_ids] + [current_user.id]
+    member_ids.each do |member_id|
       next if member_id == ""
       MeetingUser.create(
         meeting_id: @meeting.id,
